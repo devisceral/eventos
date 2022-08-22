@@ -17,6 +17,9 @@
   color: #fff;
 }
 
+.opcoes-login {
+  text-align: center;
+}
 .opcoes-login a{
   text-decoration: none;
   color: #fff;

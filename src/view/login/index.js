@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import './index.css'
 
+import firebase from '../../config/firebase';
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+
 function Login(){
+
+  const [email, setEmail] = useState();
+  const [senha, setSenha] = useState();
+  const [msgTipo, setMsgTipo] = useState();
+
+  function logar(){
+    const auth = getAuth()
+    signInWithEmailAndPassword(auth, email, senha).then(resultado => {
+      setMsgTipo('sucesso');
+    }).catch(erro => {
+      setMsgTipo('erro');
+    });
+  }
+
   return(
     <div className="login-content d-flex align-items-center">
       <form className="form-signin mx-auto">
@@ -9,15 +26,16 @@ function Login(){
           <h1 className="h3 mb-3 font-weight-normal text-white fw-bold">Login</h1>
         </div>
 
-        <input type="email" id="inputEmail" className="form-control my-2" placeholder="Email " />
-        <input type="password" id="inputPassword" className="form-control my-2" placeholder="Senha" />
+        <input onChange={(e) => setEmail(e.target.value)} type="email" id="inputEmail" className="form-control my-2" placeholder="Email " />
+        <input onChange={(e) => setSenha(e.target.value)} type="password" id="inputPassword" className="form-control my-2" placeholder="Senha" />
 
-        <button className="btn btn-lg btn-primary btn-block btn-login" type="submit">Sign in</button>
+        <button onClick={logar} className="btn btn-lg btn-primary btn-block btn-login" type="button">Logar</button>
 
         <div className="msg-login text-white text-center my-5">
-          <span><strong>Wow!</strong> Você está conectado!</span>
-          <br></br>
-          <span><strong>Ops!</strong> Verifique se a senha ou usuário estão corretos! </span>
+      
+            {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Você está conectado!</span>}
+            {msgTipo === 'erro' && <span><strong>Ops!</strong> Verifique se a senha ou usuário estão corretos! </span>}
+            
         </div>
 
         <div className="opcoes-login mt-5">
