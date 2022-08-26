@@ -32,12 +32,10 @@ function Login(){
         <button onClick={logar} className="btn btn-lg btn-primary btn-block btn-login" type="button">Logar</button>
 
         <div className="msg-login text-white text-center my-5">
-      
             {msgTipo === 'sucesso' && <span><strong>Wow!</strong> Você está conectado!</span>}
             {msgTipo === 'erro' && <span><strong>Ops!</strong> Verifique se a senha ou usuário estão corretos! </span>}
-            
         </div>
-
+      
         <div className="opcoes-login mt-5">
           <a href="#" className="mx-2">Recuperar Senha</a>
           <span className="text-white">&#9733;</span>

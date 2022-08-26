@@ -1,8 +1,10 @@
-import Login from "./view/login";
+// import Login from "./view/login";
+import NovoUsuario from "./view/usuario-novo";
 
 function App() {
   return (
-    <Login></Login>
+    // <Login></Login>
+    <NovoUsuario></NovoUsuario>
   );
 }
 
