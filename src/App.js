@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import store from "../src/store/";
+import { Provider } from "react-redux/es/exports";
 
 /*Páginas */
 import Login from "./view/login/";
@@ -8,13 +10,15 @@ import Home from "./view/home";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route exact path='/novousuario' element={<NovoUsuario />} />
-        <Route exact path='/login' element={<Login />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/novousuario' element={<NovoUsuario />} />
+          <Route exact path='/login' element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
