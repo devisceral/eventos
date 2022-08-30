@@ -9,11 +9,11 @@ import Home from "./view/home";
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Login />} />
-      <Route path='/novousuario' element={<NovoUsuario />} />
-      <Route path='/home' element={<Home />} />
-    </Routes>
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/novousuario' element={<NovoUsuario />} />
+        <Route exact path='/login' element={<Login />} />
+      </Routes>
     </BrowserRouter>
   );
 }
